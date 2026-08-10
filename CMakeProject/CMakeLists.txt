@@ -9,16 +9,17 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
-project ("CMakeProject")
-add_library(cmakedynamiklib SHARED "cmakedynamiklib.h" "cmakedynamiklib.cpp")
-set(CMEKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+project ("CMakeProject1")
+add_library(cmakedynamiklib SHARED "cmakedynamiklib.cpp" "cmakedynamiklib.h" )
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+#target_compile_definitions(cmakedynamiklib PRIVATE CMAKEDYNAMIKLIB_EXPORTS)
 
 # Add source to this project's executable.
-add_executable (CMakeProject "CMakeProject.cpp")
+add_executable (CMakeProject1 "CMakeProject1.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET CMakeProject PROPERTY CXX_STANDARD 20)
+  set_property(TARGET CMakeProject1 PROPERTY CXX_STANDARD 20)
 endif()
 
 # TODO: Add tests and install targets if needed.
-target_link_libraries(CMakeProject cmakedynamiklib)
+target_link_libraries(CMakeProject1 cmakedynamiklib)

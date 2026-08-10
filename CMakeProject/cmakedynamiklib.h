@@ -1,15 +1,16 @@
-#ifndef DLLDYNEMIK_H
-#define DLLDYNEMIK_H
+#ifndef CMAKEDYNAMIKLIB_H
+#define CMAKEDYNAMIKLIB_H
 
-#ifdef DLLDYNEMIK_EXPORTS
-#define PROGECT_PROG __declspec(dllexport)
+
+#ifdef CMAKEDYNAMIKLIB_EXPORTS
+#define LEAVER_API __declspec(dllexport)
 #else
-#define PROGECT_PROG __declspec(dllimport)
+#define LEAVER_API __declspec(dllimport)
 #endif
 
 namespace Dlldynamika
 {
-	class PROGECT_PROG Leaver {
+	class LEAVER_API Leaver {
 	public:
 		void leave(std::string name);
 	};
